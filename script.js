@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Password elements
+    const passwordScreen = document.getElementById('passwordScreen');
+    const mainContent = document.getElementById('mainContent');
+    const passwordInput = document.getElementById('passwordInput');
+    const submitPassword = document.getElementById('submitPassword');
+    const passwordError = document.getElementById('passwordError');
+    
+    // Main content elements
     const quoteButton = document.getElementById('quoteButton');
     const audioPlayer = document.getElementById('audioPlayer');
     const audio = document.getElementById('audio');
@@ -6,6 +14,45 @@ document.addEventListener('DOMContentLoaded', function() {
     // Total number of MP3 files (01.mp3 to 48.mp3)
     const totalFiles = 48;
     
+    // Correct password
+    const correctPassword = "בנוהל";
+    
+    // Password authentication function
+    function checkPassword() {
+        const enteredPassword = passwordInput.value.trim();
+        
+        if (enteredPassword === correctPassword) {
+            // Hide password screen and show main content
+            passwordScreen.style.display = 'none';
+            mainContent.style.display = 'block';
+            passwordError.style.display = 'none';
+            
+            // Clear password input
+            passwordInput.value = '';
+            
+            // Focus on main content
+            mainContent.focus();
+        } else {
+            // Show error message
+            passwordError.style.display = 'block';
+            passwordInput.value = '';
+            passwordInput.focus();
+        }
+    }
+    
+    // Password screen event listeners
+    submitPassword.addEventListener('click', checkPassword);
+    
+    passwordInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            checkPassword();
+        }
+    });
+    
+    // Focus on password input when page loads
+    passwordInput.focus();
+    
+    // Main content functionality (existing code)
     quoteButton.addEventListener('click', function() {
         // Generate a random number between 1 and 48
         const randomNumber = Math.floor(Math.random() * totalFiles) + 1;

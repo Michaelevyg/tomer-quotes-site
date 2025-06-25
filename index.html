@@ -7,8 +7,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="main-headline">אתר הציטוטים של תומר 2</h1>
+    <!-- Password Screen -->
+    <div id="passwordScreen" class="password-screen">
+        <div class="password-container">
+            <h2 class="password-title">הזן סיסמה</h2>
+            <div class="password-form">
+                <input type="password" id="passwordInput" class="password-input" placeholder="סיסמה" />
+                <button id="submitPassword" class="password-button">כניסה</button>
+            </div>
+            <div id="passwordError" class="password-error" style="display: none;">
+                סיסמה שגויה. נסה שוב.
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden initially) -->
+    <div id="mainContent" class="container" style="display: none;">
+        <h1 class="main-headline">אתר הציטוטים של תומר</h1>
         <button id="quoteButton" class="quote-button">תן לי ציטוט</button>
         <div id="audioPlayer" class="audio-player" style="display: none;">
             <audio id="audio" controls>
